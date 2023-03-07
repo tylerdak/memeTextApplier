@@ -15,12 +15,12 @@ def make_meme(topString, bottomString, filename):
 
 	# find biggest font size that works
 	fontSize = int(imageSize[1]/5)
-	font = ImageFont.truetype("/Library/Fonts/Impact.ttf", fontSize)
+	font = ImageFont.truetype("impact.ttf", fontSize)
 	topTextSize = font.getsize(topString)
 	bottomTextSize = font.getsize(bottomString)
 	while topTextSize[0] > imageSize[0]-20 or bottomTextSize[0] > imageSize[0]-20:
 		fontSize = fontSize - 1
-		font = ImageFont.truetype("/Library/Fonts/Impact.ttf", fontSize)
+		font = ImageFont.truetype("impact.ttf", fontSize)
 		topTextSize = font.getsize(topString)
 		bottomTextSize = font.getsize(bottomString)
 
@@ -47,7 +47,7 @@ def make_meme(topString, bottomString, filename):
 	draw.text(topTextPosition, topString, (255,255,255), font=font)
 	draw.text(bottomTextPosition, bottomString, (255,255,255), font=font)
 
-	img.save("temp.png")
+	return img
 
 def get_upper(somedata):
 	'''
@@ -72,39 +72,4 @@ def get_lower(somedata):
 
 	return result
 
-
-
-if __name__ == '__main__':
-
-	args_len = len(sys.argv)
-	topString = ''
-	meme = 'standard'
-
-	if args_len == 1:
-		# no args except the launch of the script
-		print('args plz')
-
-	elif args_len == 2:
-		# only one argument, use standard meme
-		bottomString = get_upper(sys.argv[-1])
-
-	elif args_len == 3:
-		# args give meme and one line
-		bottomString = get_upper(sys.argv[-1])
-		meme = get_lower(sys.argv[1])
-
-	elif args_len == 4:
-		# args give meme and two lines
-		topString = get_upper(sys.argv[-2])
-		bottomString = get_upper(sys.argv[-1])
-		meme = get_lower(sys.argv[1])
-	else:
-		# so many args
-		# what do they mean
-		# too intense
-		print('to many argz')
-
-	print(meme)	
-	filename = str(meme)+'.jpg'
-	make_meme(topString, bottomString, filename)	
 
