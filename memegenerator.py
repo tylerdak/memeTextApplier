@@ -8,9 +8,8 @@ from PIL import ImageDraw
 import sys
 
 
-def make_meme(topString, bottomString, filename):
-
-	img = Image.open(filename)
+# where img is a PIL.Image object
+def makeMemeFromImage(topString, bottomString, img):
 	imageSize = img.size
 
 	# find biggest font size that works
@@ -48,6 +47,10 @@ def make_meme(topString, bottomString, filename):
 	draw.text(bottomTextPosition, bottomString, (255,255,255), font=font)
 
 	return img
+
+def makeMemeFromFile(topString, bottomString, filename):
+	img = Image.open(filename)
+	return makeMemeFromImage(topString,bottomString,img)
 
 def get_upper(somedata):
 	'''
