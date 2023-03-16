@@ -21,7 +21,7 @@ def makeMemeFromImage(topString, bottomString, img):
 	bottomTextSize = font.getsize(bottomString)
 	while topTextSize[0] > imageSize[0]-20 or bottomTextSize[0] > imageSize[0]-20:
 		fontSize = fontSize - 1
-		font = ImageFont.truetype("impact.ttf", fontSize)
+		font = ImageFont.truetype(impact_file, fontSize)
 		topTextSize = font.getsize(topString)
 		bottomTextSize = font.getsize(bottomString)
 
