@@ -6,7 +6,7 @@ from PIL import Image
 from PIL import ImageDraw
 
 import sys
-
+import os
 
 # where img is a PIL.Image object
 def makeMemeFromImage(topString, bottomString, img):
@@ -14,7 +14,9 @@ def makeMemeFromImage(topString, bottomString, img):
 
 	# find biggest font size that works
 	fontSize = int(imageSize[1]/5)
-	font = ImageFont.truetype("impact.ttf", fontSize)
+	impact_file = os.path.join(os.path.dirname(__file__), 'impact.ttf')
+	print(impact_file)
+	font = ImageFont.truetype(impact_file, fontSize)
 	topTextSize = font.getsize(topString)
 	bottomTextSize = font.getsize(bottomString)
 	while topTextSize[0] > imageSize[0]-20 or bottomTextSize[0] > imageSize[0]-20:
