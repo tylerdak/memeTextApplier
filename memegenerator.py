@@ -15,7 +15,6 @@ def makeMemeFromImage(topString, bottomString, img):
 	# find biggest font size that works
 	fontSize = int(imageSize[1]/5)
 	impact_file = os.path.join(os.path.dirname(__file__), 'impact.ttf')
-	print(impact_file)
 	font = ImageFont.truetype(impact_file, fontSize)
 	topTextSize = font.getsize(topString)
 	bottomTextSize = font.getsize(bottomString)
